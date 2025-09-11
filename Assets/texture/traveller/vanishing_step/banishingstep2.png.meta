@@ -52,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -148,12 +148,12 @@ TextureImporter:
       name: banishingstep2_0
       rect:
         serializedVersion: 2
-        x: 125
-        y: 247
-        width: 300
-        height: 178
+        x: 118
+        y: 120
+        width: 339
+        height: 314
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -170,12 +170,12 @@ TextureImporter:
       name: banishingstep2_1
       rect:
         serializedVersion: 2
-        x: 91
-        y: 104
-        width: 222
-        height: 140
+        x: 135
+        y: 148
+        width: 176
+        height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -192,12 +192,12 @@ TextureImporter:
       name: banishingstep2_2
       rect:
         serializedVersion: 2
-        x: 185
-        y: 108
-        width: 210
-        height: 129
+        x: 186
+        y: 109
+        width: 161
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -206,6 +206,50 @@ TextureImporter:
       bones: []
       spriteID: e65a323a99fe929e0800000000000000
       internalID: -1645520745681148562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banishingstep2_3
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 188
+        width: 111
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 727db5079f9512344887e7f42fca767a
+      internalID: -963562124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: banishingstep2_4
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 105
+        width: 89
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94df2dd199c88fc41bac88e1f7d79e3e
+      internalID: -401390762
       vertices: []
       indices: 
       edges: []
@@ -222,11 +266,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      - key: SpriteEditor.SliceOnImport
+        value: False
     nameFileIdTable:
       banishingstep2_0: -4100171823441757619
       banishingstep2_1: 2323240256864620116
       banishingstep2_2: -1645520745681148562
+      banishingstep2_3: -963562124
+      banishingstep2_4: -401390762
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
