@@ -129,6 +129,9 @@ GameObject:
   m_Component:
   - component: {fileID: 217724734}
   - component: {fileID: 217724733}
+  - component: {fileID: 217724737}
+  - component: {fileID: 217724736}
+  - component: {fileID: 217724735}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -148,6 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bb40c80082ff34aa38f8a42b06f511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1: {fileID: 217724737}
+  player2: {fileID: 217724736}
+  smashBall: {fileID: 217724735}
 --- !u!4 &217724734
 Transform:
   m_ObjectHideFlags: 0
@@ -163,6 +169,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &217724735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217724732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a8c511515c1a443989eb3a00851955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &217724736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217724732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2187fc08af94fd34e9151996f366bf49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP_2: 5
+--- !u!114 &217724737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217724732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b555524481d08a4da41e513d6c8d78d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP_1: 5
 --- !u!1 &223924855
 GameObject:
   m_ObjectHideFlags: 0
