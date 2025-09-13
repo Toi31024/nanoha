@@ -1,0 +1,55 @@
+{
+    "version": 1,
+    "name": "new_playerController",
+    "maps": [
+        {
+            "name": "controll",
+            "id": "14f94ebc-7786-4d0d-9892-35e275453e5c",
+            "actions": [
+                {
+                    "name": "move_press",
+                    "type": "Button",
+                    "id": "893ed54a-1828-419f-a645-6c0d36b34177",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "move_release",
+                    "type": "Button",
+                    "id": "a4b65edb-c1b4-44fc-82fb-64f02fd99efb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bd9b826a-39a6-48f8-85c3-ba9fcc542023",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "move_press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c1d9fa7-8247-482e-956e-0be648a61d1a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "move_release",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
