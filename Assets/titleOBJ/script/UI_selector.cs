@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UI_selector : MonoBehaviour
 {
     public bool selector_start = true;
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -20,6 +21,7 @@ public class UI_selector : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
                 Debug.Log("Start!");
+                SceneManager.LoadScene("Game");
             }
         }
 
