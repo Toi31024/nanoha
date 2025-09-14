@@ -18,31 +18,51 @@ public class traveller : MonoBehaviour
     private Vector2 moveInput;
 
     // キャラクターの向きを保持するための変数
+    private Vector2 lastMoveDirection; // 最後に移動した方向を記憶
     private bool isFacingRight = true;
+    private bool isAttacking = false; // 攻撃中かどうかを判定するフラグ
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         traveller_InputAction = new Traveller_controller();
+        // Attackアクションが実行されたとき(ボタンが押されたとき)にAttackメソッドを呼び出す
+        traveller_InputAction.Player.Fire.performed += context => Attack();
     }
 
     private void OnEnable()
     {
         traveller_InputAction.Player.Move.Enable();
+        traveller_InputAction.Player.Fire.Enable(); // Attackアクションも有効化
     }
 
     private void OnDisable()
     {
         traveller_InputAction.Player.Move.Disable();
+        traveller_InputAction.Player.Fire.Disable(); // Attackアクションも無効化
     }
 
+    void Start()
+    {
+        // ゲーム開始時のデフォルトの向きを下に設定
+        lastMoveDirection = Vector2.down;
+    }
     void Update()
     {
-        moveInput = traveller_InputAction.Player.Move.ReadValue<Vector2>();
-
-        // アニメーションとキャラクターの向きを更新する処理
+        // 攻撃中でなければ入力を受け付ける
+        if (!isAttacking)
+        {
+            moveInput = traveller_InputAction.Player.Move.ReadValue<Vector2>();
+        }
+        
         UpdateVisuals();
+        
+        // 移動入力がある場合、最後の移動方向を更新
+        if (moveInput.sqrMagnitude > 0.01f)
+        {
+            lastMoveDirection = moveInput.normalized;
+        }
     }
 
     private void FixedUpdate()
@@ -53,6 +73,12 @@ public class traveller : MonoBehaviour
 
     private void MovePlayer()
     {
+        // 攻撃中は移動を停止する
+        if (isAttacking)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return; // これ以降の処理はしない
+        } 
         rb.linearVelocity = moveInput.normalized * moveSpeed;
     }
 
@@ -67,27 +93,15 @@ public class traveller : MonoBehaviour
     // アニメーション＆反転処理 
     private void UpdateVisuals()
     {
-        // --- アニメーションの切り替え ---
-        // moveInputのベクトルの長さが0より大きい（＝入力がある）か判定
-        if (moveInput.sqrMagnitude > 0.01f)
-        {
-            anim.SetBool("run", true);
-        }
-        else
-        {
-            anim.SetBool("run", false);
-        }
+        anim.SetBool("run", moveInput.sqrMagnitude > 0.01f && !isAttacking);
 
-        // --- キャラクターの向きの反転 ---
-        // 水平方向の入力があり、かつ現在の向きと入力方向が違う場合に反転させる
+        // 左右の反転処理（攻撃中も向きは維持）
         if (moveInput.x > 0 && !isFacingRight)
         {
-            // 右入力 かつ 現在左向きなら、右を向かせる
             Flip();
         }
         else if (moveInput.x < 0 && isFacingRight)
         {
-            // 左入力 かつ 現在右向きなら、左を向かせる
             Flip();
         }
     }
@@ -102,5 +116,48 @@ public class traveller : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+    // --- ここからが新しい攻撃処理 ---
+    private void Attack()
+    {
+        // 攻撃中は何もしない
+        if (isAttacking) return;
+        
+        isAttacking = true;
+        moveInput = Vector2.zero; // 攻撃開始時に入力をゼロにして、runアニメーションを止める
+
+        // 最後に移動していた方向に基づいてAttackDirectionを設定
+        // 横方向の入力が大きい場合
+        if (Mathf.Abs(lastMoveDirection.x) > Mathf.Abs(lastMoveDirection.y))
+        {
+            anim.SetInteger("AttackDirection", 2); // 2: 横攻撃
+            
+            // 向きを合わせる
+            if (lastMoveDirection.x > 0 && !isFacingRight) Flip();
+            else if (lastMoveDirection.x < 0 && isFacingRight) Flip();
+        }
+        // 縦方向の入力が大きい場合
+        else
+        {
+            // 上方向
+            if (lastMoveDirection.y > 0)
+            {
+                anim.SetInteger("AttackDirection", 1); // 1: 上攻撃
+            }
+            // 下方向
+            else
+            {
+                anim.SetInteger("AttackDirection", 3); // 3: 下攻撃
+            }
+        }
+        
+        // Attackトリガーを起動してアニメーションを開始
+        anim.SetTrigger("Attack");
+    }
+
+    // アニメーションイベントから呼び出すためのメソッド
+    public void OnAttackAnimationFinished()
+    {
+        isAttacking = false;
     }
 }
