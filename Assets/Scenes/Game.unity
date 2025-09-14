@@ -216,12 +216,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 223924858}
+  - component: {fileID: 223924862}
   - component: {fileID: 223924857}
   - component: {fileID: 223924856}
   - component: {fileID: 223924859}
   - component: {fileID: 223924861}
   - component: {fileID: 223924860}
-  - component: {fileID: 223924862}
   m_Layer: 0
   m_Name: traveller
   m_TagString: Untagged
