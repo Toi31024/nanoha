@@ -233,11 +233,19 @@ public class traveller : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // 衝突した相手のタグが "DamageObject" だった場合
-        if (collision.gameObject.CompareTag("DamageObject"))
-        {
-            TakeDamage(1); // 1ダメージを受ける
-        }
+    // 1. まず、何かに衝突したかを確認
+    Debug.Log("何かに衝突した！ 相手の名前: " + collision.gameObject.name);
+
+    // 2. 衝突した相手のタグが "DamageObject" かどうかを確認
+    if (collision.gameObject.CompareTag("DamageObject"))
+    {
+        Debug.Log("ダメージオブジェクトに衝突した！ TakeDamageを呼び出します。");
+        TakeDamage(1); // 1ダメージを受ける
+    }
+    else
+    {
+        Debug.Log("衝突した相手はダメージオブジェクトではありませんでした。相手のタグ: " + collision.gameObject.tag);
+    }
     }
 
     // ダメージを受ける処理をまとめたメソッド

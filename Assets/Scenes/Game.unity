@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 508945759}
   - component: {fileID: 508945758}
   m_Layer: 0
-  m_Name: Square
+  m_Name: damage
   m_TagString: DamageObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,11 +538,11 @@ Transform:
   m_GameObject: {fileID: 508945756}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.02, y: 1.15, z: 0}
+  m_LocalPosition: {x: 6.78244, y: 0.43804997, z: 0}
   m_LocalScale: {x: 0.5, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 909703179}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &508945758
 MonoBehaviour:
@@ -909,38 +909,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &909703178
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 909703179}
-  m_Layer: 0
-  m_Name: Damage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &909703179
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 909703178}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.76244, y: -0.71195, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 508945757}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &952460899
@@ -2411,7 +2379,7 @@ SceneRoots:
   - {fileID: 532233898}
   - {fileID: 223924858}
   - {fileID: 217724734}
-  - {fileID: 909703179}
+  - {fileID: 508945757}
   - {fileID: 2050112638}
   - {fileID: 1918982771}
   - {fileID: 1568888265}
