@@ -18,6 +18,14 @@ public class traveller : MonoBehaviour
     [SerializeField] private float dashDuration = 0.2f; // 移動にかかる時間（この値が小さいほど速い）
     [SerializeField] private float dashCooldown = 1f; // 使用後のクールダウン時間
 
+    [Header("ステータス設定")]
+    [SerializeField] private int maxHp = 5;
+    private int currentHp;
+
+    [Header("ダメージ設定")]
+    [SerializeField] private float invincibilityDuration = 1.5f; // ダメージ後の無敵時間
+    private bool isInvincible = false; // 無敵中かどうかのフラグ
+    private SpriteRenderer spriteRenderer; // 点滅させるためのスプライトレンダラー
     private Rigidbody2D rb;
     private Animator anim;
     private Traveller_controller traveller_InputAction;
@@ -33,6 +41,7 @@ public class traveller : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); // スプライトレンダラーを取得
         traveller_InputAction = new Traveller_controller();
         // Attackアクションが実行されたとき(ボタンが押されたとき)にAttackメソッドを呼び出す
         traveller_InputAction.Player.Fire.performed += context => Attack();
@@ -58,11 +67,13 @@ public class traveller : MonoBehaviour
     {
         // ゲーム開始時のデフォルトの向きを下に設定
         lastMoveDirection = Vector2.down;
+        currentHp = maxHp; // HPを最大値で初期化
+        Debug.Log("ゲーム開始時のHP: " + currentHp);
     }
     void Update()
     {
-        // 攻撃中でなければ入力を受け付ける
-        if (!isAttacking && !isDashing)
+        // 攻撃中,バニシングステップ中でなければ入力を受け付ける
+        if (!isAttacking && !isDashing && !isInvincible)
         {
             moveInput = traveller_InputAction.Player.Move.ReadValue<Vector2>();
         }
@@ -91,8 +102,8 @@ public class traveller : MonoBehaviour
 
     private void MovePlayer()
     {
-        // 攻撃中は移動を停止する
-        if (isAttacking)
+        // 攻撃中、無敵中は移動を停止する
+        if (isAttacking || isInvincible)
         {
             rb.linearVelocity = Vector2.zero;
             return; // これ以降の処理はしない
@@ -183,7 +194,7 @@ public class traveller : MonoBehaviour
     {
         // 攻撃中、ダッシュ中、クールダウン中は発動しない
         if (isAttacking || isDashing || dashCooldownTimer > 0) return;
-        
+
         // ダッシュ処理の本体であるコルーチンを開始
         StartCoroutine(DashCoroutine());
     }
@@ -200,11 +211,11 @@ public class traveller : MonoBehaviour
         // 2. 移動先の計算
         Vector2 startPosition = transform.position;
         Vector2 targetPosition = startPosition + lastMoveDirection * dashDistance;
-        
+
         // 移動先が移動範囲を超えないようにClampする
         targetPosition.x = Mathf.Clamp(targetPosition.x, minBounds.x, maxBounds.x);
         targetPosition.y = Mathf.Clamp(targetPosition.y, minBounds.y, maxBounds.y);
-        
+
         // 3. 高速移動の実行
         float elapsedTime = 0f;
         while (elapsedTime < dashDuration)
@@ -216,8 +227,68 @@ public class traveller : MonoBehaviour
         }
         // 念のため、最終位置に正確に移動させる
         rb.MovePosition(targetPosition);
-        
+
         // 4. ダッシュ終了時の設定
         isDashing = false;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // 衝突した相手のタグが "DamageObject" だった場合
+        if (collision.gameObject.CompareTag("DamageObject"))
+        {
+            TakeDamage(1); // 1ダメージを受ける
+        }
+    }
+
+    // ダメージを受ける処理をまとめたメソッド
+    public void TakeDamage(int damage)
+    {
+        // 無敵時間中はダメージを受けない
+        if (isInvincible) return;
+
+        currentHp -= damage;
+        Debug.Log("プレイヤーがダメージを受けた！ 現在のHP: " + currentHp);
+
+        // HPが0より大きい場合はダメージモーションと無敵処理
+        if (currentHp > 0)
+        {
+            anim.SetTrigger("Hurt");
+            StartCoroutine(InvincibilityCoroutine());
+        }
+        // HPが0以下の場合は死亡処理
+        else
+        {
+            Die();
+        }
+    }
+
+    // 無敵時間と点滅を管理するコルーチン
+    private IEnumerator InvincibilityCoroutine()
+    {
+        isInvincible = true;
+
+        // 指定された無敵時間の間、点滅を繰り返す
+        float timer = 0f;
+        while (timer < invincibilityDuration)
+        {
+            // スプライトの表示・非表示を切り替える
+            spriteRenderer.enabled = !spriteRenderer.enabled;
+            
+            // 0.1秒待つ
+            yield return new WaitForSeconds(0.1f);
+            timer += 0.1f;
+        }
+
+        // 無敵時間が終わったら、必ず表示状態に戻してフラグを解除
+        spriteRenderer.enabled = true;
+        isInvincible = false;
+    }
+
+    // 死亡時の処理
+    private void Die()
+    {
+        Debug.Log("プレイヤーは力尽きた...");
+        // ここにゲームオーバー処理などを書く（例：オブジェクトを非表示にする）
+        gameObject.SetActive(false);
     }
 }
