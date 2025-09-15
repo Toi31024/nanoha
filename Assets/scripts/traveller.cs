@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -12,6 +13,11 @@ public class traveller : MonoBehaviour
     [SerializeField] private Vector2 minBounds;
     [SerializeField] private Vector2 maxBounds;
 
+    [Header("バニシングステップ設定")]
+    [SerializeField] private float dashDistance = 3f; // 移動する距離
+    [SerializeField] private float dashDuration = 0.2f; // 移動にかかる時間（この値が小さいほど速い）
+    [SerializeField] private float dashCooldown = 1f; // 使用後のクールダウン時間
+
     private Rigidbody2D rb;
     private Animator anim;
     private Traveller_controller traveller_InputAction;
@@ -21,7 +27,8 @@ public class traveller : MonoBehaviour
     private Vector2 lastMoveDirection; // 最後に移動した方向を記憶
     private bool isFacingRight = true;
     private bool isAttacking = false; // 攻撃中かどうかを判定するフラグ
-
+    private bool isDashing = false; // ダッシュ中かどうかのフラグ
+    private float dashCooldownTimer = 0f; // クールダウンタイマー
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -29,18 +36,22 @@ public class traveller : MonoBehaviour
         traveller_InputAction = new Traveller_controller();
         // Attackアクションが実行されたとき(ボタンが押されたとき)にAttackメソッドを呼び出す
         traveller_InputAction.Player.Fire.performed += context => Attack();
+        // --- Dashアクションの受付を追加 ---
+        traveller_InputAction.Player.Vanishing_step.performed += context => Dash();
     }
 
     private void OnEnable()
     {
         traveller_InputAction.Player.Move.Enable();
         traveller_InputAction.Player.Fire.Enable(); // Attackアクションも有効化
+        traveller_InputAction.Player.Vanishing_step.Enable(); // Dashアクションも有効化
     }
 
     private void OnDisable()
     {
         traveller_InputAction.Player.Move.Disable();
         traveller_InputAction.Player.Fire.Disable(); // Attackアクションも無効化
+        traveller_InputAction.Player.Vanishing_step.Disable(); // Dashアクションも無効化
     }
 
     void Start()
@@ -51,23 +62,30 @@ public class traveller : MonoBehaviour
     void Update()
     {
         // 攻撃中でなければ入力を受け付ける
-        if (!isAttacking)
+        if (!isAttacking && !isDashing)
         {
             moveInput = traveller_InputAction.Player.Move.ReadValue<Vector2>();
         }
-        
+
         UpdateVisuals();
-        
+
         // 移動入力がある場合、最後の移動方向を更新
         if (moveInput.sqrMagnitude > 0.01f)
         {
             lastMoveDirection = moveInput.normalized;
         }
+        if (dashCooldownTimer > 0)
+        {
+            dashCooldownTimer -= Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (!isDashing)
+        {
+            MovePlayer();
+        }
         EnforceBounds();
     }
 
@@ -78,7 +96,7 @@ public class traveller : MonoBehaviour
         {
             rb.linearVelocity = Vector2.zero;
             return; // これ以降の処理はしない
-        } 
+        }
         rb.linearVelocity = moveInput.normalized * moveSpeed;
     }
 
@@ -121,8 +139,8 @@ public class traveller : MonoBehaviour
     private void Attack()
     {
         // 攻撃中は何もしない
-        if (isAttacking) return;
-        
+        if (isAttacking || isDashing) return;
+
         isAttacking = true;
         moveInput = Vector2.zero; // 攻撃開始時に入力をゼロにして、runアニメーションを止める
 
@@ -131,7 +149,7 @@ public class traveller : MonoBehaviour
         if (Mathf.Abs(lastMoveDirection.x) > Mathf.Abs(lastMoveDirection.y))
         {
             anim.SetInteger("AttackDirection", 2); // 2: 横攻撃
-            
+
             // 向きを合わせる
             if (lastMoveDirection.x > 0 && !isFacingRight) Flip();
             else if (lastMoveDirection.x < 0 && isFacingRight) Flip();
@@ -150,7 +168,7 @@ public class traveller : MonoBehaviour
                 anim.SetInteger("AttackDirection", 3); // 3: 下攻撃
             }
         }
-        
+
         // Attackトリガーを起動してアニメーションを開始
         anim.SetTrigger("Attack");
     }
@@ -159,5 +177,47 @@ public class traveller : MonoBehaviour
     public void OnAttackAnimationFinished()
     {
         isAttacking = false;
+    }
+    // Dashボタンが押されたときに呼び出されるメソッド
+    private void Dash()
+    {
+        // 攻撃中、ダッシュ中、クールダウン中は発動しない
+        if (isAttacking || isDashing || dashCooldownTimer > 0) return;
+        
+        // ダッシュ処理の本体であるコルーチンを開始
+        StartCoroutine(DashCoroutine());
+    }
+
+    // バニシングステップの本体処理（IEnumerator型）
+    private IEnumerator DashCoroutine()
+    {
+        // 1. ダッシュ開始時の設定
+        isDashing = true;
+        dashCooldownTimer = dashCooldown; // クールダウンタイマーを開始
+        anim.SetTrigger("Dash"); // ダッシュアニメーションを再生
+        moveInput = Vector2.zero; // 移動入力を止める
+
+        // 2. 移動先の計算
+        Vector2 startPosition = transform.position;
+        Vector2 targetPosition = startPosition + lastMoveDirection * dashDistance;
+        
+        // 移動先が移動範囲を超えないようにClampする
+        targetPosition.x = Mathf.Clamp(targetPosition.x, minBounds.x, maxBounds.x);
+        targetPosition.y = Mathf.Clamp(targetPosition.y, minBounds.y, maxBounds.y);
+        
+        // 3. 高速移動の実行
+        float elapsedTime = 0f;
+        while (elapsedTime < dashDuration)
+        {
+            // 現在地から目的地までを線形補間して移動させる
+            rb.MovePosition(Vector2.Lerp(startPosition, targetPosition, elapsedTime / dashDuration));
+            elapsedTime += Time.fixedDeltaTime; // 物理更新の時間で進める
+            yield return new WaitForFixedUpdate(); // 次の物理更新まで待つ
+        }
+        // 念のため、最終位置に正確に移動させる
+        rb.MovePosition(targetPosition);
+        
+        // 4. ダッシュ終了時の設定
+        isDashing = false;
     }
 }
