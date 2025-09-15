@@ -19,8 +19,8 @@ public class traveller : MonoBehaviour
     [SerializeField] private float dashCooldown = 1f; // 使用後のクールダウン時間
 
     [Header("ステータス設定")]
-    [SerializeField] private int maxHp = 5;
-    private int currentHp;
+    [SerializeField] public int maxHp = 5;
+    public int currentHp;
 
     [Header("ダメージ設定")]
     [SerializeField] private float invincibilityDuration = 1.5f; // ダメージ後の無敵時間

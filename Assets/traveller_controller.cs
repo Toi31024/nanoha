@@ -382,6 +382,17 @@ public partial class @Traveller_controller: IInputActionCollection2, IDisposable
                     ""action"": ""Vanishing_step"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2352bd0-756b-42cc-a94d-3d15e7fc05ab"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vanishing_step"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
