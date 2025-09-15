@@ -1658,7 +1658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 2847448764572909135, guid: 2ef2641a053bcca4da5fc60fe914c335, type: 3}
-  spawnInterval: 2.5
+  spawnInterval: 3
   spawnXRange: 8
   spawnYPositionTop: 10
   spawnYPositionBottom: -10
