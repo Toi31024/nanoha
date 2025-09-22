@@ -396,7 +396,7 @@ MonoBehaviour:
   dashDistance: 5
   dashDuration: 0.1
   dashCooldown: 1
-  maxHp: 100
+  maxHp: 5
   currentHp: 0
   invincibilityDuration: 1.5
 --- !u!70 &223924863
@@ -1613,6 +1613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1432614421}
+  traveller_obj: {fileID: 223924855}
 --- !u!1 &1524324668
 GameObject:
   m_ObjectHideFlags: 0

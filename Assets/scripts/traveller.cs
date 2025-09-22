@@ -233,19 +233,19 @@ public class traveller : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-    // 1. まず、何かに衝突したかを確認
-    Debug.Log("何かに衝突した！ 相手の名前: " + collision.gameObject.name);
+        // 1. まず、何かに衝突したかを確認
+        Debug.Log("何かに衝突した！ 相手の名前: " + collision.gameObject.name);
 
-    // 2. 衝突した相手のタグが "DamageObject" かどうかを確認
-    if (collision.gameObject.CompareTag("DamageObject"))
-    {
-        Debug.Log("ダメージオブジェクトに衝突した！ TakeDamageを呼び出します。");
-        TakeDamage(1); // 1ダメージを受ける
-    }
-    else
-    {
-        Debug.Log("衝突した相手はダメージオブジェクトではありませんでした。相手のタグ: " + collision.gameObject.tag);
-    }
+        // 2. 衝突した相手のタグが "DamageObject" かどうかを確認
+        if (collision.gameObject.CompareTag("DamageObject"))
+        {
+            Debug.Log("ダメージオブジェクトに衝突した！ TakeDamageを呼び出します。");
+            TakeDamage(1); // 1ダメージを受ける
+        }
+        else
+        {
+            Debug.Log("衝突した相手はダメージオブジェクトではありませんでした。相手のタグ: " + collision.gameObject.tag);
+        }
     }
 
     // ダメージを受ける処理をまとめたメソッド
@@ -281,7 +281,7 @@ public class traveller : MonoBehaviour
         {
             // スプライトの表示・非表示を切り替える
             spriteRenderer.enabled = !spriteRenderer.enabled;
-            
+
             // 0.1秒待つ
             yield return new WaitForSeconds(0.1f);
             timer += 0.1f;
