@@ -3,17 +3,15 @@ using UnityEngine;
 public class HPbarScript_traveller : MonoBehaviour
 {
     [SerializeField] Animator animator;
-    private GameObject GameManager;
-    player1 player1;
-
+    [SerializeField] GameObject traveller_obj;
+    traveller traveller_script;
     void Start()
     {
-        GameManager = GameObject.Find("GameManager");
-        player1 = GameManager.GetComponent<player1>();
+        traveller_script = traveller_obj.GetComponent<traveller>();
     }
 
     void Update()
     {
-        animator.SetInteger("Traveller_HP", player1.HP_1);
+        animator.SetInteger("Traveller_HP", traveller_script.currentHp);
     }
 }
