@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Numerics;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -26,6 +29,9 @@ public class traveller : MonoBehaviour
     [SerializeField] private float invincibilityDuration = 1.5f; // ダメージ後の無敵時間
     private bool isInvincible = false; // 無敵中かどうかのフラグ
     private SpriteRenderer spriteRenderer; // 点滅させるためのスプライトレンダラー
+
+    [Header("攻撃設定")]
+    [SerializeField] private GameObject attackHitbox;
     private Rigidbody2D rb;
     private Animator anim;
     private Traveller_controller traveller_InputAction;
@@ -199,6 +205,36 @@ public class traveller : MonoBehaviour
         StartCoroutine(DashCoroutine());
     }
 
+    //Hitboxの有効化
+    public void ActivateHitbox()
+    {
+        Debug.Log("1.ActivateHitboxが呼ばれた。ヒットボックスアクティベート");
+        //lastMoveDirectionに基づいてヒットボックスの位置を調整
+        if (Mathf.Abs(lastMoveDirection.x) > Mathf.Abs(lastMoveDirection.y))
+        {
+            // isFacingRightはキャラクターの向き(Scale)を反映しているので、それを使う
+            attackHitbox.transform.localPosition = new Vector2(isFacingRight ? 1 : -1, 0);
+        }
+        else
+        {
+            if (lastMoveDirection.y > 0)
+            {
+                attackHitbox.transform.localPosition = new Vector2(0, 1);
+            }
+            else
+            {
+                attackHitbox.transform.localPosition = new Vector2(0, -1);
+            }
+        }
+        attackHitbox.SetActive(true);
+    }
+
+
+    //Animation Eventから呼び出す：ヒットボックスを無効化する
+    public void DeactivateHitbox()
+    {
+        attackHitbox.SetActive(false);
+    }
     // バニシングステップの本体処理（IEnumerator型）
     private IEnumerator DashCoroutine()
     {
