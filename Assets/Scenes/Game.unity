@@ -130,13 +130,14 @@ GameObject:
   - component: {fileID: 112368813}
   - component: {fileID: 112368815}
   - component: {fileID: 112368814}
+  - component: {fileID: 112368816}
   m_Layer: 0
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &112368813
 Transform:
   m_ObjectHideFlags: 0
@@ -225,6 +226,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.2559195, y: 3.2537696}
   m_EdgeRadius: 0
+--- !u!114 &112368816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112368812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87eec275e6360c345a755a2b094c585f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 1
 --- !u!1 &217724732
 GameObject:
   m_ObjectHideFlags: 0
