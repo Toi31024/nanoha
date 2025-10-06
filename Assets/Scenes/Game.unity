@@ -521,6 +521,12 @@ MonoBehaviour:
   currentHp: 0
   invincibilityDuration: 1.5
   attackHitbox: {fileID: 112368812}
+  horizontalHitboxSize: {x: 2, y: 4}
+  verticalHitboxSize: {x: 4, y: 2}
+  rightAttackOffset: {x: 1, y: 0}
+  leftAttackOffset: {x: 2, y: 0}
+  upAttackOffset: {x: 0, y: 2}
+  downAttackOffset: {x: 0, y: -2}
 --- !u!70 &223924863
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1377,7 +1383,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1781,7 +1787,7 @@ Transform:
   m_GameObject: {fileID: 1432614419}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.54, y: 6.02, z: 0}
+  m_LocalPosition: {x: -80.3, y: 31.4, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2069,7 +2075,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524324668}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73706a693fc7a174b8cc2f30d90003b4, type: 3}
   m_Name: 
@@ -2738,7 +2744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6169924763013592750, guid: 2ef2641a053bcca4da5fc60fe914c335, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9003631627790798075, guid: 2ef2641a053bcca4da5fc60fe914c335, type: 3}
       propertyPath: m_LocalPosition.x

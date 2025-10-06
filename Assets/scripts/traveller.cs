@@ -32,6 +32,17 @@ public class traveller : MonoBehaviour
 
     [Header("攻撃設定")]
     [SerializeField] private GameObject attackHitbox;
+
+    [Header("攻撃判定の形")]
+    [SerializeField] private Vector2 horizontalHitboxSize = new Vector2(2, 1); // 横攻撃のサイズ
+    [SerializeField] private Vector2 verticalHitboxSize = new Vector2(1, 2);   // 縦攻撃のサイズ
+
+    [Header("攻撃判定の位置オフセット")]
+    [SerializeField] private Vector2 rightAttackOffset = new Vector2(1, 0);   // 右攻撃の位置
+    [SerializeField] private Vector2 leftAttackOffset = new Vector2(-1, 0);  // 左攻撃の位置
+    [SerializeField] private Vector2 upAttackOffset = new Vector2(0, 1);     // 上攻撃の位置
+    [SerializeField] private Vector2 downAttackOffset = new Vector2(0, -1);   // 下攻撃の位置
+    private BoxCollider2D attackBoxCollider; // ヒットボックスのコライダーを保持する変数
     private Rigidbody2D rb;
     private Animator anim;
     private Traveller_controller traveller_InputAction;
@@ -49,6 +60,8 @@ public class traveller : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>(); // スプライトレンダラーを取得
         traveller_InputAction = new Traveller_controller();
+        // ヒットボックスのBoxCollider2Dを取得
+        attackBoxCollider = attackHitbox.GetComponent<BoxCollider2D>(); 
         // Attackアクションが実行されたとき(ボタンが押されたとき)にAttackメソッドを呼び出す
         traveller_InputAction.Player.Fire.performed += context => Attack();
         // --- Dashアクションの受付を追加 ---
@@ -206,26 +219,42 @@ public class traveller : MonoBehaviour
     }
 
     //Hitboxの有効化
+    // Animation Eventから呼び出す：ヒットボックスを有効化・位置調整する
     public void ActivateHitbox()
     {
-        Debug.Log("1.ActivateHitboxが呼ばれた。ヒットボックスアクティベート");
-        //lastMoveDirectionに基づいてヒットボックスの位置を調整
+        // 最後に移動していた方向が横方向か判定
         if (Mathf.Abs(lastMoveDirection.x) > Mathf.Abs(lastMoveDirection.y))
         {
-            // isFacingRightはキャラクターの向き(Scale)を反映しているので、それを使う
-            attackHitbox.transform.localPosition = new Vector2(isFacingRight ? 1 : -1, 0);
-        }
-        else
-        {
-            if (lastMoveDirection.y > 0)
+            // 横攻撃用の形を設定
+            attackBoxCollider.size = horizontalHitboxSize;
+
+            // キャラクターの向きに応じて、右か左の位置オフセットを適用
+            if (isFacingRight)
             {
-                attackHitbox.transform.localPosition = new Vector2(0, 1);
+                attackBoxCollider.offset = rightAttackOffset;
             }
             else
             {
-                attackHitbox.transform.localPosition = new Vector2(0, -1);
+                attackBoxCollider.offset = leftAttackOffset;
             }
         }
+        else // 縦方向の場合
+        {
+            // 縦攻撃用の形を設定
+            attackBoxCollider.size = verticalHitboxSize;
+
+            // 向きに応じて、上か下の位置オフセットを適用
+            if (lastMoveDirection.y > 0)
+            {
+                attackBoxCollider.offset = upAttackOffset;
+            }
+            else
+            {
+                attackBoxCollider.offset = downAttackOffset;
+            }
+        }
+
+        // 全ての設定が終わったら、ヒットボックスを有効化
         attackHitbox.SetActive(true);
     }
 
