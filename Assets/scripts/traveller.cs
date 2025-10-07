@@ -54,6 +54,8 @@ public class traveller : MonoBehaviour
     private bool isAttacking = false; // 攻撃中かどうかを判定するフラグ
     private bool isDashing = false; // ダッシュ中かどうかのフラグ
     private float dashCooldownTimer = 0f; // クールダウンタイマー
+    public GameObject gameOverCanvas; // ゲームオーバー画面のCanvas
+    private float survivalTimer = 0f; // 生存時間を計測するタイマー
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -61,7 +63,7 @@ public class traveller : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>(); // スプライトレンダラーを取得
         traveller_InputAction = new Traveller_controller();
         // ヒットボックスのBoxCollider2Dを取得
-        attackBoxCollider = attackHitbox.GetComponent<BoxCollider2D>(); 
+        attackBoxCollider = attackHitbox.GetComponent<BoxCollider2D>();
         // Attackアクションが実行されたとき(ボタンが押されたとき)にAttackメソッドを呼び出す
         traveller_InputAction.Player.Fire.performed += context => Attack();
         // --- Dashアクションの受付を追加 ---
@@ -95,6 +97,7 @@ public class traveller : MonoBehaviour
         if (!isAttacking && !isDashing && !isInvincible)
         {
             moveInput = traveller_InputAction.Player.Move.ReadValue<Vector2>();
+            survivalTimer += Time.deltaTime;
         }
 
         UpdateVisuals();
@@ -362,6 +365,14 @@ public class traveller : MonoBehaviour
     {
         Debug.Log("プレイヤーは力尽きた...");
         // ここにゲームオーバー処理などを書く（例：オブジェクトを非表示にする）
+        // スコアマネージャーに最終的な生存時間を渡してスコアを計算させる
+        ScoreManager.CalculateFinalScore(survivalTimer);
+        Time.timeScale = 0.2f;
+        // ゲームオーバー画面を有効化する（これによりアニメーションが再生開始される）
+        if (gameOverCanvas != null)
+        {
+            gameOverCanvas.SetActive(true);
+        }
         gameObject.SetActive(false);
     }
 }

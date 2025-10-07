@@ -1,13 +1,15 @@
 using UnityEngine;
-using TMPro;
-using Unity.VisualScripting;
+using TMPro; // TextMeshProを使うために必要
 
 public class result_time : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI time_txt;
-    void Awake()
+
+    void Start()
     {
-        time_txt.text = "You survived " + timer.time.ToString("F2");
+        // ScoreManagerが記憶している生存時間を読み出し、テキストに表示する
+        // .ToString("F2") は、小数点以下2桁まで表示するための書式設定
+        time_txt.text = "You survived " + ScoreManager.survivalTime.ToString("F2") + "s";
     }
 }

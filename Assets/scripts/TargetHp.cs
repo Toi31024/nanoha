@@ -7,11 +7,13 @@ public class TargetHp : MonoBehaviour
     {
         hp -= damage;
         Debug.Log("5. TakeDamageが実行されました。残りHP: " + hp);
-        
+
         if (hp <= 0)
         {
             Debug.Log("ターゲット破壊");
+            ScoreManager.AddTargetDestroyed();
             Destroy(gameObject);
         }
+    
     }
 }
