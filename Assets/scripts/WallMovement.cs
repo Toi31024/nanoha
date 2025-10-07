@@ -11,7 +11,7 @@ public class WallMovement : MonoBehaviour
     void Update()
     {
     // このログがConsoleに表示されるか、また値がどうなっているかを確認します
-    Debug.Log("Wall Update - Speed: " + speed + ", Direction: " + moveDirection);
+    //Debug.Log("Wall Update - Speed: " + speed + ", Direction: " + moveDirection);
 
         // 指定された方向に、指定された速さで移動し続ける
         transform.Translate(moveDirection * speed * Time.deltaTime);
