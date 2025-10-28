@@ -520,7 +520,7 @@ MonoBehaviour:
   dashDistance: 5
   dashDuration: 0.1
   dashCooldown: 1
-  maxHp: 5
+  maxHp: 100
   currentHp: 0
   invincibilityDuration: 1.5
   attackHitbox: {fileID: 112368812}
@@ -3134,17 +3134,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
-    - target: {fileID: 2847448764572909135, guid: 2ef2641a053bcca4da5fc60fe914c335, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 3422135539069864356, guid: 2ef2641a053bcca4da5fc60fe914c335, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6169924763013592750, guid: 2ef2641a053bcca4da5fc60fe914c335, type: 3}
       propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6169924763013592750, guid: 2ef2641a053bcca4da5fc60fe914c335, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9003631627790798075, guid: 2ef2641a053bcca4da5fc60fe914c335, type: 3}
       propertyPath: m_LocalPosition.x

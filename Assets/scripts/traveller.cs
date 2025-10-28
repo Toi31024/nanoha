@@ -299,20 +299,20 @@ public class traveller : MonoBehaviour
         // 4. ダッシュ終了時の設定
         isDashing = false;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         // 1. まず、何かに衝突したかを確認
-        Debug.Log("何かに衝突した！ 相手の名前: " + collision.gameObject.name);
+        Debug.Log("何かに衝突した！ 相手の名前: " + other.gameObject.name);
 
         // 2. 衝突した相手のタグが "DamageObject" かどうかを確認
-        if (collision.gameObject.CompareTag("DamageObject"))
+        if (other.gameObject.CompareTag("DamageObject"))
         {
             Debug.Log("ダメージオブジェクトに衝突した！ TakeDamageを呼び出します。");
             TakeDamage(1); // 1ダメージを受ける
         }
         else
         {
-            Debug.Log("衝突した相手はダメージオブジェクトではありませんでした。相手のタグ: " + collision.gameObject.tag);
+            Debug.Log("衝突した相手はダメージオブジェクトではありませんでした。相手のタグ: " + other.gameObject.tag);
         }
     }
 
