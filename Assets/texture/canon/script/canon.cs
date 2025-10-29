@@ -9,12 +9,16 @@ public class canon : MonoBehaviour
     //弾のプレハブオブジェクト
     [SerializeField] private GameObject tama;
 
+    //3秒ごとに弾を発射するための変数
+    private float targetTime = 3.0f;
+    private float currentTime = 0;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        currentTime += Time.deltaTime;
+        if (currentTime > targetTime)
         {
-            Debug.Log("玉発射");
+            currentTime = 0;
             //敵の座標を変数posに保存
             var pos = this.gameObject.transform.position;
             //弾のプレハブ作成
