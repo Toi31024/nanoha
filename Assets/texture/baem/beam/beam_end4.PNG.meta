@@ -1,0 +1,936 @@
+fileFormatVersion: 2
+guid: 8de1cd5cafc7a494ca733a4f0b7d6df5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -952256215389973750
+    second: beam_end4_0
+  - first:
+      213: 4566022596042219286
+    second: beam_end4_1
+  - first:
+      213: 5180049922931095754
+    second: beam_end4_2
+  - first:
+      213: 6341510524348014010
+    second: beam_end4_3
+  - first:
+      213: -7413707810869021649
+    second: beam_end4_4
+  - first:
+      213: -1163750033491650798
+    second: beam_end4_5
+  - first:
+      213: -4130077616880861512
+    second: beam_end4_6
+  - first:
+      213: 4443075136323573896
+    second: beam_end4_7
+  - first:
+      213: -6651665466667807986
+    second: beam_end4_8
+  - first:
+      213: -4618216986031853907
+    second: beam_end4_9
+  - first:
+      213: 3635794555357333631
+    second: beam_end4_10
+  - first:
+      213: -4689120246422955959
+    second: beam_end4_11
+  - first:
+      213: -57655891141764172
+    second: beam_end4_12
+  - first:
+      213: -9036548037109817017
+    second: beam_end4_13
+  - first:
+      213: -4767302549940740496
+    second: beam_end4_14
+  - first:
+      213: -5989323389409079670
+    second: beam_end4_15
+  - first:
+      213: -4091688501591016937
+    second: beam_end4_16
+  - first:
+      213: 1191270817198949318
+    second: beam_end4_17
+  - first:
+      213: 105225136547445943
+    second: beam_end4_18
+  - first:
+      213: -6568316911081246988
+    second: beam_end4_19
+  - first:
+      213: -3441133665468498888
+    second: beam_end4_20
+  - first:
+      213: 3636044961152612516
+    second: beam_end4_21
+  - first:
+      213: -4539506924057114443
+    second: beam_end4_22
+  - first:
+      213: -3544189056455321935
+    second: beam_end4_23
+  - first:
+      213: -2368949122617923110
+    second: beam_end4_24
+  - first:
+      213: 8297296602445666430
+    second: beam_end4_25
+  - first:
+      213: 4576899753485986358
+    second: beam_end4_26
+  - first:
+      213: -8903250212796904236
+    second: beam_end4_27
+  - first:
+      213: -4510708417593920096
+    second: beam_end4_28
+  - first:
+      213: 764059238769792181
+    second: beam_end4_29
+  - first:
+      213: -1962327545323827230
+    second: beam_end4_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: beam_end4_0
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 969
+        width: 48
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a03d5827408e8c2f0800000000000000
+      internalID: -952256215389973750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_1
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 966
+        width: 51
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61fd089fb55cd5f30800000000000000
+      internalID: 4566022596042219286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_2
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 979
+        width: 32
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac8f817b5fb33e740800000000000000
+      internalID: 5180049922931095754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_3
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 975
+        width: 32
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abd1a2f1932910850800000000000000
+      internalID: 6341510524348014010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_4
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 975
+        width: 53
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f24fc9886083d1990800000000000000
+      internalID: -7413707810869021649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_5
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 974
+        width: 39
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2179166a28789dfe0800000000000000
+      internalID: -1163750033491650798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_6
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 956
+        width: 66
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8be360f1a440fa6c0800000000000000
+      internalID: -4130077616880861512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_7
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 961
+        width: 48
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 888dfeacb49f8ad30800000000000000
+      internalID: 4443075136323573896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_8
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 933
+        width: 34
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b4886008980b3a0800000000000000
+      internalID: -6651665466667807986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_9
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 934
+        width: 63
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dae65eb9e1cc8efb0800000000000000
+      internalID: -4618216986031853907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_10
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 930
+        width: 29
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f788f5482efe47230800000000000000
+      internalID: 3635794555357333631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_11
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 944
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9481edadaf5eceeb0800000000000000
+      internalID: -4689120246422955959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_12
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 932
+        width: 23
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bb5941c54a233ff0800000000000000
+      internalID: -57655891141764172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_13
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 944
+        width: 25
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 741e05c107bb79280800000000000000
+      internalID: -9036548037109817017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_14
+      rect:
+        serializedVersion: 2
+        x: 1683
+        y: 938
+        width: 44
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07ed7fdc69327ddb0800000000000000
+      internalID: -4767302549940740496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_15
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 916
+        width: 40
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e45513c16a1eca0800000000000000
+      internalID: -5989323389409079670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_16
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 917
+        width: 38
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71afd1b8cf66737c0800000000000000
+      internalID: -4091688501591016937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_17
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 893
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c3ce622f7e388010800000000000000
+      internalID: 1191270817198949318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_18
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 896
+        width: 106
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bc3a5544b5d57100800000000000000
+      internalID: 105225136547445943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_19
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 899
+        width: 39
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4feafced196a8d4a0800000000000000
+      internalID: -6568316911081246988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_20
+      rect:
+        serializedVersion: 2
+        x: 1927
+        y: 902
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83cbc15c923ae30d0800000000000000
+      internalID: -3441133665468498888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_21
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 874
+        width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a8b9d8a0a3d57230800000000000000
+      internalID: 3636044961152612516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_22
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 871
+        width: 35
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b84620018e6001c0800000000000000
+      internalID: -4539506924057114443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_23
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 878
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b65721c4d280dec0800000000000000
+      internalID: -3544189056455321935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_24
+      rect:
+        serializedVersion: 2
+        x: 1729
+        y: 886
+        width: 72
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad9a26ff25dcf1fd0800000000000000
+      internalID: -2368949122617923110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_25
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 862
+        width: 23
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7854d88c4be52370800000000000000
+      internalID: 8297296602445666430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_26
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 859
+        width: 70
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63aea1b831a648f30800000000000000
+      internalID: 4576899753485986358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_27
+      rect:
+        serializedVersion: 2
+        x: 1119
+        y: 855
+        width: 43
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dcc1d75a1d417480800000000000000
+      internalID: -8903250212796904236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_28
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 864
+        width: 37
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a533fbc79eb661c0800000000000000
+      internalID: -4510708417593920096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_29
+      rect:
+        serializedVersion: 2
+        x: 1846
+        y: 862
+        width: 36
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b49a3a54db7a9a00800000000000000
+      internalID: 764059238769792181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: beam_end4_30
+      rect:
+        serializedVersion: 2
+        x: 1790
+        y: 843
+        width: 39
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ef42009e7964c4e0800000000000000
+      internalID: -1962327545323827230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      beam_end4_0: -952256215389973750
+      beam_end4_1: 4566022596042219286
+      beam_end4_10: 3635794555357333631
+      beam_end4_11: -4689120246422955959
+      beam_end4_12: -57655891141764172
+      beam_end4_13: -9036548037109817017
+      beam_end4_14: -4767302549940740496
+      beam_end4_15: -5989323389409079670
+      beam_end4_16: -4091688501591016937
+      beam_end4_17: 1191270817198949318
+      beam_end4_18: 105225136547445943
+      beam_end4_19: -6568316911081246988
+      beam_end4_2: 5180049922931095754
+      beam_end4_20: -3441133665468498888
+      beam_end4_21: 3636044961152612516
+      beam_end4_22: -4539506924057114443
+      beam_end4_23: -3544189056455321935
+      beam_end4_24: -2368949122617923110
+      beam_end4_25: 8297296602445666430
+      beam_end4_26: 4576899753485986358
+      beam_end4_27: -8903250212796904236
+      beam_end4_28: -4510708417593920096
+      beam_end4_29: 764059238769792181
+      beam_end4_3: 6341510524348014010
+      beam_end4_30: -1962327545323827230
+      beam_end4_4: -7413707810869021649
+      beam_end4_5: -1163750033491650798
+      beam_end4_6: -4130077616880861512
+      beam_end4_7: 4443075136323573896
+      beam_end4_8: -6651665466667807986
+      beam_end4_9: -4618216986031853907
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
