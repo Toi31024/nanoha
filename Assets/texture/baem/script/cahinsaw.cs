@@ -96,7 +96,7 @@ public class cahinsaw : MonoBehaviour
                     attack_sec = 1.2f;
                     attack_end_sec = 1.75f;
                 }
-                if (how_many_times >= 7 && how_many_times < 14)
+                else if (how_many_times >= 7 && how_many_times < 14)
                 {
                     Debug.Log("難易度増加2");
                     setup_sec = 1.0f;
@@ -104,6 +104,15 @@ public class cahinsaw : MonoBehaviour
                     super_spin_sec = 0.75f;
                     attack_sec = 0.9f;
                     attack_end_sec = 1.45f;
+                }
+                else if (how_many_times >= 14)
+                {
+                    Debug.Log("難易度増加3");
+                    setup_sec = 0.5f;
+                    spin_sec = 0.10f;
+                    super_spin_sec = 0.50f;
+                    attack_sec = 0.5f;
+                    attack_end_sec = 1.05f;
                 }
             }
         }
