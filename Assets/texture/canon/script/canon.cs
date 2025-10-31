@@ -9,9 +9,12 @@ public class canon : MonoBehaviour
     //弾のプレハブオブジェクト
     [SerializeField] private GameObject tama;
 
+    private int how_many_time = 0;
+
     //3秒ごとに弾を発射するための変数
     private float targetTime = 3.0f;
     private float currentTime = 0;
+    private float speed = 0.8f;
 
     void Update()
     {
@@ -29,8 +32,24 @@ public class canon : MonoBehaviour
             //敵からプレイヤーに向かうベクトルを作る
             UnityEngine.Vector2 vec = player.transform.position - pos;
             //弾のRigidBody2Dコンポーネントのvelocityに、先ほど求めたベクトルを入れてチカラを加える
-            t.GetComponent<Rigidbody2D>().linearVelocity = vec * 0.8f;
+            t.GetComponent<Rigidbody2D>().linearVelocity = vec * speed;
             tama.gameObject.transform.localScale = new UnityEngine.Vector3(0.3f, 0.3f, 0.3f);
+
+            how_many_time++;
+
+            if (how_many_time >= 12)
+            {
+                Debug.Log("キャノン難易度増加１");
+                speed = 1.0f;
+                targetTime = 2.4f;
+            }
+
+            if (how_many_time >= 25)
+            {
+                Debug.Log("キャノン難易度増加２");
+                speed = 0.6f;
+                targetTime = 1.1f;
+            }
         }
     }
 }
