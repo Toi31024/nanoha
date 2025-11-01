@@ -3887,7 +3887,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2847448764572909135, guid: 2ef2641a053bcca4da5fc60fe914c335, type: 3}
       propertyPath: m_Name
-      value: Wall
+      value: BiriBiri
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847448764572909135, guid: 2ef2641a053bcca4da5fc60fe914c335, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3422135539069864356, guid: 2ef2641a053bcca4da5fc60fe914c335, type: 3}
       propertyPath: m_Size.y

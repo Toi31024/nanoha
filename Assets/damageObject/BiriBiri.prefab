@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6169924763013592750}
   - component: {fileID: 402964338631560884}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: BiriBiri
   m_TagString: DamageObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
