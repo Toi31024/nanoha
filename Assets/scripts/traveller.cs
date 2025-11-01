@@ -27,6 +27,8 @@ public class traveller : MonoBehaviour
 
     [Header("ダメージ設定")]
     [SerializeField] private float invincibilityDuration = 1.5f; // ダメージ後の無敵時間
+    [SerializeField] private float stunDuration = 0.5f; // ダメージ時の硬直時間（移動停止）
+    private bool isStunned = false; // 硬直中かどうかのフラグ
     private bool isInvincible = false; // 無敵中かどうかのフラグ
     private SpriteRenderer spriteRenderer; // 点滅させるためのスプライトレンダラー
 
@@ -94,9 +96,13 @@ public class traveller : MonoBehaviour
     void Update()
     {
         // 攻撃中,バニシングステップ中でなければ入力を受け付ける
-        if (!isAttacking && !isDashing && !isInvincible)
+        if (!isAttacking && !isDashing && !isStunned)
         {
             moveInput = traveller_InputAction.Player.Move.ReadValue<Vector2>();
+        }
+        // 生存時間を更新
+        if (!isDashing && !isAttacking)
+        {
             survivalTimer += Time.deltaTime;
         }
 
@@ -125,7 +131,7 @@ public class traveller : MonoBehaviour
     private void MovePlayer()
     {
         // 攻撃中、無敵中は移動を停止する
-        if (isAttacking || isInvincible)
+        if (isAttacking || isStunned)
         {
             rb.linearVelocity = Vector2.zero;
             return; // これ以降の処理はしない
@@ -303,23 +309,28 @@ public class traveller : MonoBehaviour
     {
         // 1. まず、何かに衝突したかを確認
         Debug.Log("何かに衝突した！ 相手の名前: " + other.gameObject.name);
+        if (other.CompareTag("DamageObject"))
+        {
+            AttackData attack = other.gameObject.GetComponent<AttackData>();
 
-        // 2. 衝突した相手のタグが "DamageObject" かどうかを確認
-        if (other.gameObject.CompareTag("DamageObject"))
-        {
-            Debug.Log("ダメージオブジェクトに衝突した！ TakeDamageを呼び出します。");
-            TakeDamage(1); // 1ダメージを受ける
-        }
-        else
-        {
-            Debug.Log("衝突した相手はダメージオブジェクトではありませんでした。相手のタグ: " + other.gameObject.tag);
+            // 2. 衝突した相手のタグが "DamageObject" かどうかを確認
+            if (attack != null)
+            {
+                Debug.Log(other.name + "からダメージを受けます。スタン：" + attack.causesStun);
+                TakeDamage(attack.damage, attack.causesStun); // 1ダメージを受ける
+            }
+            else
+            {
+                Debug.Log(other.name + "はDamageObjectタグですがAttackDataがありません。" + other.gameObject.tag);
+                TakeDamage(1, false); // スタンせず一ダメージを受ける
+            }
         }
     }
 
     // ダメージを受ける処理をまとめたメソッド
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool causesStun)
     {
-        // 無敵時間中はダメージを受けない
+// 無敵時間中はダメージを受けない
         if (isInvincible) return;
 
         currentHp -= damage;
@@ -328,8 +339,10 @@ public class traveller : MonoBehaviour
         // HPが0より大きい場合はダメージモーションと無敵処理
         if (currentHp > 0)
         {
-            anim.SetTrigger("Hurt");
-            StartCoroutine(InvincibilityCoroutine());
+            //anim.SetTrigger("Hurt");
+            
+            // コルーチンにもスタン情報を渡す
+            StartCoroutine(DamageEffectCoroutine(causesStun)); // ◀◀ 修正後
         }
         // HPが0以下の場合は死亡処理
         else
@@ -338,28 +351,78 @@ public class traveller : MonoBehaviour
         }
     }
 
-    // 無敵時間と点滅を管理するコルーチン
-    private IEnumerator InvincibilityCoroutine()
+// 無敵時間と点滅を管理するコルーチン
+    private IEnumerator DamageEffectCoroutine(bool causesStun)
     {
+        // 1. 無敵と硬直（必要なら）を開始
         isInvincible = true;
-
-        // 指定された無敵時間の間、点滅を繰り返す
-        float timer = 0f;
-        while (timer < invincibilityDuration)
+        if (causesStun)
         {
-            // スプライトの表示・非表示を切り替える
-            spriteRenderer.enabled = !spriteRenderer.enabled;
-
-            // 0.1秒待つ
-            yield return new WaitForSeconds(0.1f);
-            timer += 0.1f;
+            isStunned = true;
+            moveInput = Vector2.zero;
+            anim.SetBool("Hurt stun", true);
+        }
+        else
+        {
+            anim.SetTrigger("Hurt");
         }
 
-        // 無敵時間が終わったら、必ず表示状態に戻してフラグを解除
-        spriteRenderer.enabled = true;
-        isInvincible = false;
-    }
+        // 2. 点滅処理とスタン解除のタイマーを並行して開始
+        float flashTimer = 0f; // 点滅と無敵時間を計測するタイマー
+        float stunTimer = 0f;  // スタン時間を計測するタイマー
+        bool isStunOver = !causesStun; // スタンしない攻撃なら最初から true
 
+        // 3. 無敵時間 (invincibilityDuration) が終わるまでループ
+        while (flashTimer < invincibilityDuration)
+        {
+            // --- 点滅処理 ---
+            spriteRenderer.enabled = !spriteRenderer.enabled;
+            
+            // --- 待機時間を計算 (点滅間隔は0.1秒) ---
+            float waitTime = 0.1f;
+            
+            // 残り無敵時間が0.1秒未満なら、待機時間を残り時間にする
+            if (invincibilityDuration - flashTimer < waitTime)
+            {
+                waitTime = invincibilityDuration - flashTimer;
+            }
+
+            // --- タイマーを進める ---
+            flashTimer += waitTime; // 無敵タイマー
+            
+            // --- スタン解除処理（まだスタン中の場合） ---
+            if (!isStunOver)
+            {
+                stunTimer += waitTime; // スタンタイマー
+                
+                // スタン時間が経過したら
+                if (stunTimer >= stunDuration)
+                {
+                    // スタンとアニメーションを解除
+                    isStunOver = true;
+                    isStunned = false;
+                    anim.SetBool("Hurt stun", false);
+                }
+            }
+            
+            // --- 待機 ---
+            if (waitTime > 0.001f) // ほぼ時間が残ってないなら待たない
+            {
+                yield return new WaitForSeconds(waitTime);
+            }
+        }
+
+        // 4. 無敵時間が終わったら、必ず元に戻す
+        spriteRenderer.enabled = true; // 点滅終了
+        isInvincible = false;        // 無敵終了
+        
+        // (万が一、無敵時間よりスタン時間が長かった場合のために、ここで再度解除)
+        if (isStunned)
+        {
+            isStunned = false;
+            anim.SetBool("Hurt stun", false);
+        }
+    }
     // 死亡時の処理
     private void Die()
     {
