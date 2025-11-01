@@ -330,6 +330,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feccfae7a1cce7a49b437ef0a0f3db43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target_txt: {fileID: 735835413}
+  time_txt: {fileID: 643602632}
+  score_txt: {fileID: 1205867739}
+  press_to_title_txt: {fileID: 1760143019}
 --- !u!1 &643602632
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &643602633
 RectTransform:
   m_ObjectHideFlags: 0
@@ -498,7 +502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &735835414
 RectTransform:
   m_ObjectHideFlags: 0
@@ -755,7 +759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1205867740
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1037,12 +1041,12 @@ GameObject:
   - component: {fileID: 1760143022}
   - component: {fileID: 1760143021}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: presstostart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1760143020
 RectTransform:
   m_ObjectHideFlags: 0
