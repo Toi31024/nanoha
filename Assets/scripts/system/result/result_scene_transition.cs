@@ -14,7 +14,7 @@ public class result_scene_transition : MonoBehaviour
     void Update()
     {
         cur_time += Time.deltaTime;
-
+        
         if (cur_time >= 0.8f)
         {
             target_txt.SetActive(true);
@@ -34,6 +34,30 @@ public class result_scene_transition : MonoBehaviour
         {
             press_to_title_txt.SetActive(true);
             presta_time += Time.deltaTime;
+        }
+
+        //演出のスキップ
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (cur_time < 0.8f)
+            {
+                cur_time = 0.8f;
+            }
+
+            if (cur_time < 1.3f)
+            {
+                cur_time = 1.3f;
+            }
+
+            if (cur_time < 1.8f)
+            {
+                cur_time = 1.8f;
+            }
+
+            if (cur_time < 2.3f)
+            {
+                cur_time = 2.3f;
+            }
         }
 
 
