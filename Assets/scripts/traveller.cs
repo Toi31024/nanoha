@@ -58,6 +58,9 @@ public class traveller : MonoBehaviour
     private float dashCooldownTimer = 0f; // クールダウンタイマー
     public GameObject gameOverCanvas; // ゲームオーバー画面のCanvas
     private float survivalTimer = 0f; // 生存時間を計測するタイマー
+
+    [SerializeField] GameObject GMobj_DM_effect;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -340,6 +343,11 @@ public class traveller : MonoBehaviour
         if (currentHp > 0)
         {
             //anim.SetTrigger("Hurt");
+
+            if (causesStun == true)
+            {
+                GMobj_DM_effect.GetComponent<DamageEffectScript>().Damaged();
+            }
             
             // コルーチンにもスタン情報を渡す
             StartCoroutine(DamageEffectCoroutine(causesStun)); // ◀◀ 修正後
