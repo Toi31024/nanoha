@@ -841,7 +841,7 @@ MonoBehaviour:
   dashDistance: 5
   dashDuration: 0.1
   dashCooldown: 1
-  maxHp: 100
+  maxHp: 10
   currentHp: 0
   invincibilityDuration: 2
   stunDuration: 1.5
@@ -4876,8 +4876,8 @@ Transform:
   m_GameObject: {fileID: 1432614419}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1058.5005, y: -500.05508, z: 0}
-  m_LocalScale: {x: 1.8863101, y: 1.8863101, z: 1.8863101}
+  m_LocalPosition: {x: -617, y: 374, z: 0}
+  m_LocalScale: {x: 120.00001, y: 120.00001, z: 120.00001}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1414364089}
@@ -4950,7 +4950,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7119019802777635430, guid: dae9a86592e596543898170dc7a58098, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
