@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press to Go to Title
+  m_text: 'Press Enter
 
 '
   m_isRightToLeft: 0
