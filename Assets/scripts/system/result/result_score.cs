@@ -6,7 +6,6 @@ public class Result_score : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI score_txt;
 
-    // ★★★ 破壊数を表示するためのテキスト参照を追加 ★★★
     [SerializeField]
     private TextMeshProUGUI targetsDestroyed_txt;
 
@@ -15,7 +14,13 @@ public class Result_score : MonoBehaviour
         // ScoreManagerから最終スコアを読み出し、テキストに表示する
         score_txt.text = "Your score : " + ScoreManager.finalScore;
 
-        // ★★★ ScoreManagerから破壊したターゲット数を読み出し、テキストに表示する処理を追加 ★★★
+        // ScoreManagerから破壊したターゲット数を読み出し、テキストに表示する
         targetsDestroyed_txt.text = "Targets Destroyed: " + ScoreManager.targetsDestroyed;
+
+        // ★★★★★ ここから追加 ★★★★★
+        // プレイ結果のスコアをランキングに追加する
+        // (ScoreManager.finalScoreがint型であることを想定)
+        RankingManager.AddScore(ScoreManager.finalScore);
+        // ★★★★★ ここまで追加 ★★★★★
     }
 }
