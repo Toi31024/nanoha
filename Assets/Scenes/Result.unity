@@ -486,6 +486,7 @@ MonoBehaviour:
   time_txt: {fileID: 643602632}
   score_txt: {fileID: 1205867739}
   press_to_title_txt: {fileID: 1760143019}
+  rank_txt: {fileID: 1820212978}
 --- !u!1 &643602632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,7 +1353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1820212979
 RectTransform:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class result_scene_transition : MonoBehaviour
     [SerializeField] GameObject time_txt;
     [SerializeField] GameObject score_txt;
     [SerializeField] GameObject press_to_title_txt;
+    [SerializeField] GameObject rank_txt;
 
     private float cur_time = 0;
     private float presta_time;
@@ -28,6 +29,7 @@ public class result_scene_transition : MonoBehaviour
         if (cur_time >= 1.8f)
         {
             score_txt.SetActive(true);
+            rank_txt.SetActive(true);
         }
 
         if (cur_time >= 2.3f)
