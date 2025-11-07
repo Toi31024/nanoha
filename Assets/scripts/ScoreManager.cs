@@ -26,6 +26,6 @@ public static class ScoreManager
         survivalTime = time;
         
         // スコア計算式（この倍率は自由に調整してください）
-        finalScore = (int)(survivalTime * 50) + (targetsDestroyed * 500);
+        finalScore = (int)(survivalTime * 100) + (targetsDestroyed * 250);
     }
 }
