@@ -17,10 +17,13 @@ public class Result_score : MonoBehaviour
         // ScoreManagerから破壊したターゲット数を読み出し、テキストに表示する
         targetsDestroyed_txt.text = "Targets Destroyed: " + ScoreManager.targetsDestroyed;
 
-        // ★★★★★ ここから追加 ★★★★★
-        // プレイ結果のスコアをランキングに追加する
-        // (ScoreManager.finalScoreがint型であることを想定)
-        RankingManager.AddScore(ScoreManager.finalScore);
-        // ★★★★★ ここまで追加 ★★★★★
+        // ★★★★★ ここから変更 ★★★★★
+        // まだスコアが保存されていなければ、ランキングに追加する
+        if (!ScoreManager.isScoreSaved)
+        {
+            RankingManager.AddScore(ScoreManager.finalScore);
+            ScoreManager.MarkScoreAsSaved(); // 保存済みフラグを立てる
+        }
+        // ★★★★★ ここまで変更 ★★★★★
     }
 }

@@ -5,6 +5,7 @@ public static class ScoreManager
     public static float survivalTime { get; private set; }
     public static int targetsDestroyed { get; private set; }
     public static int finalScore { get; private set; }
+    public static bool isScoreSaved { get; private set; }
 
     // ゲーム開始時に呼ばれ、すべての記録をリセットする
     public static void Reset()
@@ -12,6 +13,13 @@ public static class ScoreManager
         survivalTime = 0f;
         targetsDestroyed = 0;
         finalScore = 0;
+        isScoreSaved = false; // 保存フラグをリセット
+    }
+
+    // isScoreSavedをtrueにするメソッド
+    public static void MarkScoreAsSaved()
+    {
+        isScoreSaved = true;
     }
 
     // ターゲットが破壊されたときに呼ばれる

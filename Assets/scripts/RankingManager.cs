@@ -73,4 +73,14 @@ public static class RankingManager
         PlayerPrefs.SetString(RankingKey, json);
         PlayerPrefs.Save(); // 念のため即時保存
     }
+
+    // ランキングデータをすべて削除するメソッド
+    public static void ClearRanking()
+    {
+        // PlayerPrefsから指定のキーのデータを削除する
+        PlayerPrefs.DeleteKey(RankingKey);
+        // 念のため即時保存
+        PlayerPrefs.Save();
+        Debug.Log("Ranking data cleared from PlayerPrefs.");
+    }
 }

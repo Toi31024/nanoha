@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class result_scene_transition : MonoBehaviour
 {
@@ -82,6 +83,7 @@ public class result_scene_transition : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
+                ScoreManager.Reset();
                 SceneManager.LoadScene("TitleScean");
             }
         }
