@@ -7,7 +7,7 @@ public class Start_screan : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.LoadScene("Game");
+            FadeManager.Instance.FadeToScene("Game");
         }
     }
 }

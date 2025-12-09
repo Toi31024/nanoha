@@ -11,7 +11,7 @@ public class TargetHp : MonoBehaviour
         if (hp <= 0)
         {
             Debug.Log("ターゲット破壊");
-            ScoreManager.AddTargetDestroyed();
+            // ScoreManager.AddTargetDestroyed();
             Destroy(gameObject);
         }
     

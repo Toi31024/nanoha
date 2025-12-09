@@ -83,7 +83,7 @@ public class result_scene_transition : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
-                ScoreManager.Reset();
+                // ScoreManager.Reset();
                 SceneManager.LoadScene("TitleScean");
             }
         }

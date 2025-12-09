@@ -10,6 +10,6 @@ public class result_time : MonoBehaviour
     {
         // ScoreManagerが記憶している生存時間を読み出し、テキストに表示する
         // .ToString("F2") は、小数点以下2桁まで表示するための書式設定
-        time_txt.text = "You survived: " + ScoreManager.survivalTime.ToString("F2") + "s";
+        // time_txt.text = "You survived: " + ScoreManager.survivalTime.ToString("F2") + "s";
     }
 }

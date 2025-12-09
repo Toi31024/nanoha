@@ -435,15 +435,50 @@ public class traveller : MonoBehaviour
     private void Die()
     {
         Debug.Log("プレイヤーは力尽きた...");
-        // ここにゲームオーバー処理などを書く（例：オブジェクトを非表示にする）
-        // スコアマネージャーに最終的な生存時間を渡してスコアを計算させる
-        ScoreManager.CalculateFinalScore(survivalTimer);
-        Time.timeScale = 0.2f;
-        // ゲームオーバー画面を有効化する（これによりアニメーションが再生開始される）
-        if (gameOverCanvas != null)
+
+        // --- プレイヤーの無効化処理 ---
+        // 1. 見えなくする（スプライトの描画をオフにする）
+        GetComponent<SpriteRenderer>().enabled = false;
+
+        // 2. 当たり判定をなくす（コライダーをオフにする）
+        GetComponent<Collider2D>().enabled = false;
+    
+        // 3. 物理的な動きを止める
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+        // 4. このスクリプト自体を無効にし、移動や入力を停止する
+        this.enabled = false;
+
+
+        // --- シーン遷移の呼び出し ---
+        // DamageEffectScriptのメソッドを呼び出して、フェードとシーン遷移を開始します。
+        if (GMobj_DM_effect != null)
         {
-            gameOverCanvas.SetActive(true);
+            // GMobj_DM_effectにアタッチされているDamageEffectScriptコンポーネントを取得します。
+            // 注意：CanvasEffecter.cs のクラス名は DamageEffectScript です。
+            DamageEffectScript effecter = GMobj_DM_effect.GetComponent<DamageEffectScript>();
+            if (effecter != null)
+            {
+                // 取得したコンポーネントのResultTransition()メソッドを呼び出します。
+                effecter.ResultTransition();
+            }
+            else
+            {
+                // effecterが見つからなかった場合のエラーログ
+                Debug.LogError("GMobj_DM_effect ゲームオブジェクトに DamageEffectScript コンポーネントがアタッチされていません！");
+                // 保険としてFadeManagerを直接呼び出します。
+                FadeManager.Instance.FadeToScene("Result");
+            }
         }
-        gameObject.SetActive(false);
+        else
+        {
+            // GMobj_DM_effect自体がインスペクターで設定されていなかった場合のエラーログ
+            Debug.LogError("GMobj_DM_effectがインスペクターで設定されていません！");
+            // この場合も保険としてFadeManagerを直接呼び出します。
+            FadeManager.Instance.FadeToScene("Result");
+        }
+    
+        // Time.timeScaleの変更やDestroy(gameObject)は、フェード処理と競合するため、ここでは行いません。
     }
 }
+
