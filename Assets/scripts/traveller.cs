@@ -120,6 +120,12 @@ public class traveller : MonoBehaviour
         {
             dashCooldownTimer -= Time.deltaTime;
         }
+
+        // テスト用に'K'キーを押したら即座にDie()を呼び出す
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Die();
+        }
     }
 
     private void FixedUpdate()
@@ -442,13 +448,6 @@ public class traveller : MonoBehaviour
 
         // 2. 当たり判定をなくす（コライダーをオフにする）
         GetComponent<Collider2D>().enabled = false;
-    
-        // 3. 物理的な動きを止める
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
-        // 4. このスクリプト自体を無効にし、移動や入力を停止する
-        this.enabled = false;
-
 
         // --- シーン遷移の呼び出し ---
         // DamageEffectScriptのメソッドを呼び出して、フェードとシーン遷移を開始します。
@@ -477,7 +476,9 @@ public class traveller : MonoBehaviour
             // この場合も保険としてFadeManagerを直接呼び出します。
             FadeManager.Instance.FadeToScene("Result");
         }
-    
+
+        // 3. このスクリプト自体を無効にし、移動や入力を停止する
+        this.enabled = false;
         // Time.timeScaleの変更やDestroy(gameObject)は、フェード処理と競合するため、ここでは行いません。
     }
 }
