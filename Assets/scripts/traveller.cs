@@ -350,11 +350,17 @@ public class traveller : MonoBehaviour
         {
             //anim.SetTrigger("Hurt");
 
-            if (causesStun == true)
-            {
-                GMobj_DM_effect.GetComponent<DamageEffectScript>().Damaged();
-            }
-            
+                    if (causesStun == true)
+                    {
+                        if (GMobj_DM_effect != null)
+                        {
+                            GMobj_DM_effect.GetComponent<CanvasEffecter>().Damaged();
+                        }
+                        else
+                        {
+                            Debug.LogError("GMobj_DM_effectがインスペクターで設定されていません！ダメージエフェクトを再生できません。");
+                        }
+                    }            
             // コルーチンにもスタン情報を渡す
             StartCoroutine(DamageEffectCoroutine(causesStun)); // ◀◀ 修正後
         }
@@ -455,7 +461,7 @@ public class traveller : MonoBehaviour
         {
             // GMobj_DM_effectにアタッチされているDamageEffectScriptコンポーネントを取得します。
             // 注意：CanvasEffecter.cs のクラス名は DamageEffectScript です。
-            DamageEffectScript effecter = GMobj_DM_effect.GetComponent<DamageEffectScript>();
+            CanvasEffecter effecter = GMobj_DM_effect.GetComponent<CanvasEffecter>();
             if (effecter != null)
             {
                 // 取得したコンポーネントのResultTransition()メソッドを呼び出します。

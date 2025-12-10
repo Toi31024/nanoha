@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DamageEffectScript : MonoBehaviour
+public class CanvasEffecter : MonoBehaviour
 {
     [SerializeField] Image DamageEfect;
     [SerializeField] GameObject beam;
